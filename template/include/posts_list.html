@@ -1,0 +1,44 @@
+{% for post in posts %}
+    <div class="post">
+        <h2 class="title">
+            <a href="{{post.url}}">{{ post.title }}</a>
+        </h2>
+
+        <div class="entry">
+            {{ post.content | limit(250) }}
+        </div>
+
+     <div class="byline">
+     <p class="meta">
+		    <span class="date" title="发布日期">
+                <i class="icon-clock"></i>
+                {{ post.date | date('%Y-%m-%d') }}
+            </span>
+		    <span class="visitors" title="访问量">
+                <i  class="icon-user"></i>
+                {{ post.visits or 0 }}
+            </span>
+		
+        
+            {% if post.tags %}
+	        <span class="tags">
+	            <i class="icon-tags"></i>
+                {% for tag in post.tags %}
+	             <a href="/tags/{{ tag }}">{{ tag }}</a>
+                {% endfor %}
+            </span>
+            {% endif %}
+
+            <a href="{{post.url}}?action=show_raw" target="_blank">
+                <i class="icon-file-text-alt"></i>show raw
+            </a>
+			</p>
+         
+	    </div>
+        
+
+
+    </div>
+{% endfor %}
+
+{% include 'include/paginator.html' %}

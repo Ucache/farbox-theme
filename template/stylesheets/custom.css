@@ -1,0 +1,41 @@
+@font-face{
+font-family:"monaco";
+src:url("/template/stylesheets/Monaco.eot");
+src:url("/template/stylesheets/Monaco.eot") format('embedded-opentype');
+src:url("/template/stylesheets/Monaco.ttf") format("truetype");
+}
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abel'), local('Abel-Regular'), url("/template/stylesheets/Abel.woff") format('woff');
+}
+
+.container{
+width : 1080px;
+}
+
+#posts .post .info{
+margin-top:0;
+padding:0;
+border-top:none;
+}
+#posts .detail_post .info{
+margin-top:0;
+}
+pre
+{
+font-family:monaco,verdana;
+background:#FFFFFF;
+}
+#posts .post .title
+{
+padding:0;
+}
+#posts .post .title a{
+padding:0;
+}
+.entry h2{
+font-size:1.6em;
+color:#D43442;
+}

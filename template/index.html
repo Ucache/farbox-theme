@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if configs.posts and posts%}
+    
+        <div id="content">
+        {% include 'include/posts_list.html' %}
+        </div>
+
+    {% elif configs.files and files%}
+
+        {% include 'include/files_list.html' %}
+
+    {% endif %}
+    
+    
+
+{% endblock %}

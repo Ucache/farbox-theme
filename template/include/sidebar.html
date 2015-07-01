@@ -1,0 +1,72 @@
+﻿{% set latest_posts=get_posts(limit=15, sort='desc') %}
+{% set hot_posts=get_data(type='post', sort='desc') %}
+{% set hot_entries=group(hot_posts, 'visits') %}
+{% set total_comments=get_comments(limit=15, sort='desc') %}
+<div id="sidebar">
+					<ul>
+                    <li id="subscribe">
+                    <div id="feedrss">
+                    <a rel="external nofollow" href="/feed" title="订阅这个博客的文章">订阅</a>
+                    </div>
+                    <div id="followme">
+                        <a href="https://plus.google.com/100281407282999636375" title="gplus" target="_blank">Google+</a>
+</div>
+                    </li>
+                    <li>
+							<div id="search">
+								<form method="get" action="#">
+									<div>
+										<input type="text" name="s" id="search-text" value="">
+										<input type="submit" id="search-submit" value="GO">
+									</div>
+								</form>
+							</div>
+							<div style="clear: both;">&nbsp;</div>
+						</li>
+
+                        <li>
+                            <h2>本站公告</h2>
+                            <p>暂时没有</p>
+                        </li>
+        
+
+						<li>
+							<h2>最近文章</h2>
+							<ul>
+                                {% for latest_post in latest_posts %}
+								<li><a href="{{ latest_post.url }}" title="{{ latest_post.title }}">{{ latest_post.title }}</a></li>
+                                {% endfor %}
+							</ul>
+						</li>
+						<li>
+							<h2>热门文章</h2>
+							<ul>
+                                {% for visits,hot_post in hot_entries %}
+                                {% for single_hot_post in hot_post %}
+								<li><a href="{{ single_hot_post.url }}" title="{{ single_hot_post.title }}">{{ single_hot_post.title }}</a></li>
+                                {% endfor %}
+                                {% endfor %}
+							</ul>
+						</li>
+                        <li>
+                            <div class="sidebar_widget">
+                                <iframe width="100%" height="120" class="share_self" frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=1&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=1636171941&verifier=bbf78df1&dpc=1"></iframe>
+                            </div>
+                        </li>
+						<li>
+							<h2>最近评论</h2>
+							<ul>
+                                {% for single_comment in total_comments %}
+								<li><p><a href="{{ single_comment.site}}" title="{{ single_comment.author }}">{{ single_comment.author}}</a>:{{ single_comment.raw_content }}</p></li>
+								{% endfor %}
+							</ul>
+						</li>
+                        <li>
+							<h2>友情链接</h2>
+							<ul>		
+								<li><a href="#">Metus aliquam pellentesque</a></li>
+								<li><a href="#">Suspendisse iaculis mauris</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
